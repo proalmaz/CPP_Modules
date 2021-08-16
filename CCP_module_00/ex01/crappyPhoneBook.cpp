@@ -6,9 +6,9 @@ string getInput()
 	do
 	{
 		cout << "'ADD' - add contact; 'SEARCH' - search contact in the phonebook; "
-											 "'EXIT'' - exit;" << endl;
+											 "'EXIT' - exit;" << endl;
 		cout << "Enter command: ";
-		cin >> command;
+		std::getline(cin, command);
 	} while (command != "ADD" && command != "SEARCH" && command != "EXIT");
 	return command;
 }
@@ -40,6 +40,8 @@ int main()
 	string command;
 	while (1)
 	{
+		if (index == 7)
+			index = 0;
 		command = getInput();
 		if (command == "EXIT")
 			exit(0);
@@ -53,6 +55,21 @@ int main()
 			printHeaderTable();
 			for (int count = 0; count < index; ++count)
 				array[count].printTable();
+			string	input;
+			int 	indexForSearch;
+			while (1)
+			{
+				cout << "Enter \"EXIT\" to return to the previous menu...\n";
+				cout << "Enter contact index: ";
+				std::getline(cin, input);
+				if (input == "EXIT")
+					break;
+				indexForSearch = std::atoi(input.c_str()) - 1;
+				if (indexForSearch > -1 && indexForSearch < index)
+					array[indexForSearch].printContact();
+				else
+					cout << "\nInvalid index." << endl;
+			}
 		}
 	}
 }
