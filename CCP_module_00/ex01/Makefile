@@ -1,6 +1,7 @@
 NAME	= crappyPhoneBook
 
-SRC		= crappyPhoneBook.cpp
+SRC		=	crappyPhoneBook.cpp \
+			Contact.cpp
 
 CC		= clang++
 
