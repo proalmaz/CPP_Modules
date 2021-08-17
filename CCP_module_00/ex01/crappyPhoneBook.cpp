@@ -1,6 +1,6 @@
 #include "crappyPhoneBook.h"
 
-string getInput()
+static string getInput()
 {
 	string command;
 	do
@@ -23,12 +23,41 @@ string checkLength(string str)
 	return str;
 }
 
-void printHeaderTable()
+static void printHeaderTable()
 {
 	cout << std::right << std::setw(10) << "Index" << "|";
 	cout << std::right << std::setw(10) << "First Name" << "|";
 	cout << std::right << std::setw(10) << "Last Name" << "|";
 	cout << std::right << std::setw(10) << "Nickname" << "|" << endl;
+}
+
+static void commandSearch(Contact array[8], int &index, int &maxIndex)
+{
+	string	input;
+	int 	indexForSearch;
+	while (1)
+	{
+		printHeaderTable();
+		for (int count = 0; count < maxIndex; ++count)
+			array[count].printTable();
+		cout << "Enter \"EXIT\" to return to the previous menu...\n";
+		cout << "Enter contact index: ";
+		std::getline(cin, input);
+		if (input == "EXIT")
+			break;
+		indexForSearch = std::atoi(input.c_str()) - 1;
+		if (indexForSearch > -1 && indexForSearch < index)
+			array[indexForSearch].printContact();
+		else
+			cout << "\nInvalid index." << endl;
+	}
+}
+
+static void commandAdd(Contact array[8], int &index, int &maxIndex)
+{
+	array[index].addContact(1 + index);
+	index++;
+	maxIndex++;
 }
 
 int main()
@@ -47,33 +76,10 @@ int main()
 		if (command == "EXIT")
 			exit(0);
 		if (command == "ADD")
-		{
-			array[index].addContact(1 + index);
-			index++;
-			maxIndex++;
-		}
+			commandAdd(array, index, maxIndex);
 		if (maxIndex >= 8)
 			maxIndex = 8;
 		if (command == "SEARCH")
-		{
-			printHeaderTable();
-			for (int count = 0; count < maxIndex; ++count)
-				array[count].printTable();
-			string	input;
-			int 	indexForSearch;
-			while (1)
-			{
-				cout << "Enter \"EXIT\" to return to the previous menu...\n";
-				cout << "Enter contact index: ";
-				std::getline(cin, input);
-				if (input == "EXIT")
-					break;
-				indexForSearch = std::atoi(input.c_str()) - 1;
-				if (indexForSearch > -1 && indexForSearch < index)
-					array[indexForSearch].printContact();
-				else
-					cout << "\nInvalid index." << endl;
-			}
-		}
+			commandSearch(array, index, maxIndex);
 	}
 }
