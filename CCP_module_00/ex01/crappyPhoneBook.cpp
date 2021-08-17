@@ -35,12 +35,13 @@ int main()
 {
 	Contact array[8];
 	int index;
+	int maxIndex;
 
-	index = 0;
+	index = maxIndex = 0;
 	string command;
 	while (1)
 	{
-		if (index == 7)
+		if (index == 8)
 			index = 0;
 		command = getInput();
 		if (command == "EXIT")
@@ -49,11 +50,14 @@ int main()
 		{
 			array[index].addContact(1 + index);
 			index++;
+			maxIndex++;
 		}
+		if (maxIndex >= 8)
+			maxIndex = 8;
 		if (command == "SEARCH")
 		{
 			printHeaderTable();
-			for (int count = 0; count < index; ++count)
+			for (int count = 0; count < maxIndex; ++count)
 				array[count].printTable();
 			string	input;
 			int 	indexForSearch;
