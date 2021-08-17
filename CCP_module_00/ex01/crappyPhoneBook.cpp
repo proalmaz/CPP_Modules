@@ -57,7 +57,7 @@ static void commandAdd(Contact array[8], int &index, int &maxIndex)
 {
 	array[index].addContact(1 + index);
 	index++;
-	maxIndex++;
+	++maxIndex;
 }
 
 int main()
