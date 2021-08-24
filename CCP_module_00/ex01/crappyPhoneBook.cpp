@@ -31,6 +31,20 @@ static void printHeaderTable()
 	cout << std::right << std::setw(10) << "Nickname" << "|" << endl;
 }
 
+static bool ft_isdigit(string str)
+{
+	int i = 0;
+	if (!str[i])
+		return false;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return false;
+		i++;
+	}
+	return true;
+}
+
 static void commandSearch(Contact array[8], int &index, int &maxIndex)
 {
 	string	input;
@@ -45,8 +59,9 @@ static void commandSearch(Contact array[8], int &index, int &maxIndex)
 		std::getline(cin, input);
 		if (input == "EXIT")
 			break;
-		indexForSearch = std::atoi(input.c_str()) - 1;
-		if (indexForSearch > -1 && indexForSearch < index)
+		if (ft_isdigit(input))
+			indexForSearch = std::atoi(input.c_str()) - 1;
+		if (indexForSearch > -1 && indexForSearch < maxIndex)
 			array[indexForSearch].printContact();
 		else
 			cout << "\nInvalid index." << endl;
@@ -63,9 +78,11 @@ static void commandAdd(Contact array[8], int &index, int &maxIndex)
 int main()
 {
 	Contact array[8];
+	Phonebook phonebook;
 	int index;
 	int maxIndex;
 
+	phonebook.setPhonebook(array);
 	index = maxIndex = 0;
 	string command;
 	while (1)

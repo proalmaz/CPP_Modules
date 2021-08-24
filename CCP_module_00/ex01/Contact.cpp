@@ -4,15 +4,15 @@ void Contact::addContact(int indexOfContact)
 {
 	index = indexOfContact;
 	cout << "Put first name: ";
-	cin >> firstName;
+	std::getline(cin, firstName);
 	cout << "Put last name: ";
-	cin >> lastName;
+	std::getline(cin, lastName);
 	cout << "Put nickname: ";
-	cin >> nickName;
+	std::getline(cin, nickName);
 	cout << "Put phone number: ";
-	cin >> phoneNumber;
+	std::getline(cin, phoneNumber);
 	cout << "Put darkest secret: ";
-	cin >> darkestSecret;
+	std::getline(cin, darkestSecret);
 	cout << "Contact added" << endl;
 }
 
