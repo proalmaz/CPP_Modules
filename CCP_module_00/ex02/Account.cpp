@@ -56,6 +56,24 @@ void Account::makeDeposit(int deposit)
 	";nb_deposits:" << _nbDeposits << endl;
 }
 
+bool Account::makeWithdrawal(int withdrawal)
+{
+	_displayTimestamp();
+	cout << "index:" << _accountIndex << ";p_amount:" << _amount;
+	if (_accountIndex == 0 || _accountIndex == 5)
+	{
+		cout << ";withdrawal:refused" << endl;
+		return false;
+	}
+	_nbWithdrawals++;
+	_totalNbWithdrawals++;
+	_amount -= withdrawal;
+	_totalAmount -= withdrawal;
+	cout << ";withdrawal:" << withdrawal << ";amount:" << _amount <<
+	";nb_withdrawals:" << _nbWithdrawals << endl;
+	return true;
+}
+
 Account::~Account()
 {
 	_displayTimestamp();
