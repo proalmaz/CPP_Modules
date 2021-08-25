@@ -31,14 +31,14 @@ static void printHeaderTable()
 	cout << std::right << std::setw(10) << "Nickname" << "|" << endl;
 }
 
-static bool ft_isdigit(string str)
+static bool checkDigits(string str)
 {
 	int i = 0;
-	if (!str[i])
+	if (str[i] == '\0')
 		return false;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (std::isdigit(str[i]) == 0)
 			return false;
 		i++;
 	}
@@ -59,9 +59,14 @@ static void commandSearch(Contact array[8], int &index, int &maxIndex)
 		std::getline(cin, input);
 		if (input == "EXIT")
 			break;
-		if (ft_isdigit(input))
+		if (input.empty())
+		{
+			cout << "\nInvalid index." << endl;
+			continue;
+		}
+		if (checkDigits(input))
 			indexForSearch = std::atoi(input.c_str()) - 1;
-		if (indexForSearch > -1 && indexForSearch < maxIndex)
+		if (indexForSearch > -1 && indexForSearch < maxIndex && checkDigits(input))
 			array[indexForSearch].printContact();
 		else
 			cout << "\nInvalid index." << endl;
