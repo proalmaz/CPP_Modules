@@ -1,4 +1,7 @@
-//
-// Created by Vera Ping on 8/25/21.
-//
+#include "Zombie.hpp"
 
+void randomChamp(string name)
+{
+	Zombie zombie(name);
+	zombie.announce();
+}

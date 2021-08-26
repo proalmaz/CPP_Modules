@@ -17,6 +17,3 @@ public:
 	~Zombie();
 	void announce();
 };
-
-void	randomChamp(string name);
-Zombie	*newZombie(string name);
