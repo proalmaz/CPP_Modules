@@ -1,6 +1,10 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(string name) { m_name = name; }
+Zombie::Zombie(string name)
+{
+	m_name = name;
+	cout << "Hello, i'm zombie " << name << endl;
+}
 
 Zombie::~Zombie()
 {
@@ -9,5 +13,5 @@ Zombie::~Zombie()
 
 void Zombie::announce()
 {
-	cout << "This zombie is " << m_name << endl;
+	cout << m_name << "  BraiiiiiiinnnzzzZ..." << endl;
 }

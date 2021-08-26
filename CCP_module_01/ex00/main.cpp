@@ -2,13 +2,14 @@
 
 Zombie *newZombie(string name)
 {
-	Zombie zombie(name);
-	return (&zombie);
+	return new Zombie(name);
 }
 
 void randomChamp(string name)
 {
-	newZombie(name)->announce();
+	Zombie *zombie = newZombie(name);
+	zombie->announce();
+	delete zombie;
 }
 
 int main()
