@@ -1,9 +1,16 @@
 #include "Zombie.hpp"
 
+Zombie::Zombie() {}
+
 Zombie::Zombie(string name)
 {
 	m_name = name;
 	cout << "Hello, i'm zombie " << name << endl;
+}
+
+void Zombie::setName(string name)
+{
+	m_name = name;
 }
 
 Zombie::~Zombie()

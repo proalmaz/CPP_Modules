@@ -7,7 +7,7 @@ SRC		=	main.cpp \
 
 CC		=	clang++
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -std=98
 
 OBJS	=	${SRC:.cpp=.o}
 
@@ -24,7 +24,7 @@ fclean: clean
 
 re:	fclean all
 
-re2: fclean all
+run: fclean all
 	make clean && clear && ./$(NAME)
 
 .PHONY: all clean fclean re
