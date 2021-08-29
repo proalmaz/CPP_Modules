@@ -1,37 +1,45 @@
-#include "main.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using std::cin;
+using std::string;
+using std::cout;
+using std::endl;
 
 int main(int argc, char *argv[])
 {
+	if (!argv[1] || !argv[2] || !argv[3])
+		return 0;
 	string filenameStr = argv[1];
 	string strForReplace = argv[2];
 	string replacedStr = argv[3];
-
-	if (!argv[1] || !argv[2] || !argv[3])
-		return 0;
-	std::ofstream outf(filenameStr.substr(0, filenameStr.length()) + ""
-																	 ".replace");
-	if (!outf)
-	{
-		std::cerr << "Uh oh, filename.replace could not be opened for writing!"
-		<< endl;
-		return 1;
-	}
 	std::ifstream inf(filenameStr);
 	if (!inf)
 	{
 		std::cerr << "Uh oh, filename could not be opened for reading!"
-		<< endl;
+				  << endl;
 		return 1;
 	}
-	while (inf)
+	std::ofstream outf(filenameStr + ".replace");
+	if (!outf)
 	{
-		string strInput;
-		inf >> strInput;
-		if (strInput == strForReplace)
+		std::cerr << "Uh oh, filename.replace could not be opened for writing!"
+				  << endl;
+		return 1;
+	}
+	string strInput;
+	while (getline(inf, strInput))
+	{
+		size_t pos = 0;
+		while ((pos = strInput.find(strForReplace, pos)) != std::string::npos)
 		{
-			strInput.substr(0, 0 + replacedStr);
-
+			strInput.erase(pos, strForReplace.length());
+			strInput.insert(pos, replacedStr);
+			pos += replacedStr.length();
 		}
+		outf << strInput << endl;
+		cout << strInput << endl;
 	}
 	return 0;
 }
