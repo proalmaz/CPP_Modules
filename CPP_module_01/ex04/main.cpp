@@ -10,7 +10,10 @@ using std::endl;
 int main(int argc, char *argv[])
 {
 	if (!argv[1] || !argv[2] || !argv[3])
+	{
+		cout << "Smth wrong!" << endl;
 		return 0;
+	}
 	string filenameStr = argv[1];
 	string strForReplace = argv[2];
 	string replacedStr = argv[3];
