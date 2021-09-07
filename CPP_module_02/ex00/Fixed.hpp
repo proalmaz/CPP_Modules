@@ -11,12 +11,16 @@ using std::endl;
 class Fixed
 {
 private:
-	int m_value;
-	static std::integral_constant<8>;
+	int					_value;
+	static const int	_fractorial = 8;
 
 public:
 	Fixed();
+	Fixed(int value);
 	~Fixed();
-	Fixed(const Fixed &fixed);
-};
+	Fixed(const Fixed& src);
+	Fixed&	operator=(const Fixed& src);
 
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
+};
