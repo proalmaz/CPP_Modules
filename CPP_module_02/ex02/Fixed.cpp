@@ -77,22 +77,22 @@ bool Fixed::operator!=(const Fixed &f2)
 
 Fixed	&Fixed::operator+(Fixed &f2)
 {
-	return (Fixed(_value + f2._value));
+	return (Fixed(this->toFloat() + f2.toFloat()));
 }
 
 Fixed	&Fixed::operator-(Fixed &f2)
 {
-	return (Fixed(_value - f2._value));
+	return (Fixed(this->toFloat() - f2.toFloat()));
 }
 
 Fixed	&Fixed::operator*(Fixed &f2)
 {
-	return (Fixed(_value * f2._value));
+	return (Fixed(this->toFloat() * f2.toFloat()));
 }
 
 Fixed	&Fixed::operator/(Fixed &f2)
 {
-	return (Fixed(_value / f2._value));
+	return (Fixed(this->toFloat() / f2.toFloat()));
 }
 
 Fixed	&Fixed::operator++()
