@@ -14,7 +14,6 @@ class Fixed
 private:
 	int					_value;
 	static const int	_fractorial = 8;
-	static const int    _exponent;
 public:
 	Fixed();
 	Fixed(const int value);
@@ -22,14 +21,14 @@ public:
 	~Fixed();
 	Fixed(const Fixed& src);
 
-	bool 	operator>(const Fixed &f2);
-	bool 	operator<(const Fixed &f2);
-	bool 	operator>=(const Fixed &f2);
-	bool 	operator<=(const Fixed &f2);
-	bool 	operator==(const Fixed &f2);
-	bool 	operator!=(const Fixed &f2);
+	bool 	operator>(Fixed const 	&f2);
+	bool 	operator<(Fixed const 	&f2);
+	bool 	operator>=(Fixed const	&f2);
+	bool 	operator<=(Fixed const	&f2);
+	bool 	operator==(Fixed const	&f2);
+	bool 	operator!=(Fixed const	&f2);
 
-	Fixed	&operator=(const Fixed& src);
+	Fixed	&operator=(Fixed const &f2);
 	Fixed	&operator+(Fixed &f2);
 	Fixed	&operator-(Fixed &f2);
 	Fixed	&operator*(Fixed &f2);
@@ -40,12 +39,14 @@ public:
 	Fixed	operator++(int);
 	Fixed	operator--(int);
 
-	static Fixed		&min(Fixed &f1, Fixed &f2);
-	static const Fixed	&min(const Fixed &f1, const Fixed &f2);
-	static Fixed		&max(Fixed &f1, Fixed &f2);
-	static const Fixed	&max(const Fixed &f1, const Fixed &f2);
+	static Fixed const	&min(Fixed const &a, Fixed const &b);
+	static Fixed const	&max(Fixed const &a, Fixed const &b);
+	Fixed				&min(Fixed	&a, Fixed	&b);
+	Fixed				&max(Fixed	&a, Fixed	&b);
 
 
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 	float   toFloat(void) const;
 	int     toInt(void) const;
 };

@@ -2,37 +2,47 @@
 
 Fixed::Fixed() : _value(0)
 {
-	cout << "Default constructor called" << endl;
+//	cout << "Default constructor called" << endl;
 }
 
 Fixed::Fixed(const int value)
 {
-	cout << "Integer constructor called" << endl;
-	_value = value * (1 << _fractorial);
+//	cout << "Integer constructor called" << endl;
+	_value = value << _fractorial;
 }
 
 Fixed::Fixed(const float value)
 {
-	cout << "Float constructor called" << endl;
-	this->_value = roundf(value * (1 << _fractorial));
+//	cout << "Float constructor called" << endl;
+	this->_value = static_cast<int>(roundf(value * (1 << _fractorial)));
 }
 
 Fixed::~Fixed()
 {
-	cout << "Destructor called" << endl;
+//	cout << "Destructor called" << endl;
 }
 
 Fixed::Fixed(const Fixed &src)
 {
-	cout << "Copy constructor called" << endl;
-	this->_value = src._value;
+//	cout << "Copy constructor called" << endl;
+	this->_value = src.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed &src)
 {
-	cout << "Assignation operator called" << endl;
-	this->_value = src._value;
+//	cout << "Assignation operator called" << endl;
+	_value = src.getRawBits();
 	return *this;
+}
+
+int		Fixed::getRawBits(void) const
+{
+	return (_value);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	_value = raw;
 }
 
 float Fixed::toFloat() const
@@ -47,32 +57,32 @@ int Fixed::toInt() const
 
 bool Fixed::operator<(const Fixed &f2)
 {
-	return (_value < f2._value);
+	return (_value < f2.getRawBits());
 }
 
 bool Fixed::operator<=(const Fixed &f2)
 {
-	return (_value <= f2._value);
+	return (_value <= f2.getRawBits());
 }
 
 bool Fixed::operator>(const Fixed &f2)
 {
-	return (_value > f2._value);
+	return (_value > f2.getRawBits());
 }
 
 bool Fixed::operator>=(const Fixed &f2)
 {
-	return (_value >= f2._value);
+	return (_value >= f2.getRawBits());
 }
 
 bool Fixed::operator==(const Fixed &f2)
 {
-	return (_value == f2._value);
+	return (_value == f2.getRawBits());
 }
 
 bool Fixed::operator!=(const Fixed &f2)
 {
-	return (_value != f2._value);
+	return (_value != f2.getRawBits());
 }
 
 Fixed	&Fixed::operator+(Fixed &f2)
@@ -109,48 +119,44 @@ Fixed	&Fixed::operator--()
 
 Fixed	Fixed::operator++(int)
 {
-	Fixed tmp(_value);
+	Fixed tmp(*this);
 	++(*this);
 	return tmp;
 }
 
 Fixed	Fixed::operator--(int)
 {
-	Fixed tmp(_value);
+	Fixed tmp(*this);
 	--(*this);
 	return tmp;
 }
 
-static Fixed		&Fixed::min(Fixed &f1, Fixed &f2)
+Fixed		&Fixed::min(Fixed	&f1, Fixed	&f2)
 {
 	if (f1 < f2)
-		return &f1;
-	else
-		return &f2;
+		return f1;
+	return f2;
 }
 
-static Fixed		&Fixed::max(Fixed &f1, Fixed &f2)
+Fixed		&Fixed::max(Fixed	&f1, Fixed	&f2)
 {
 	if (f1 > f2)
-		return &f1;
-	else
-		return &f2;
+		return f1;
+	return f2;
 }
 
-static const Fixed	&Fixed::min(const Fixed &f1, const Fixed &f2)
+Fixed const	&Fixed::min(Fixed const &f1, Fixed const &f2)
 {
 	if (f1 < f2)
-		return &f1;
-	else
-		return &f2;
+		return f1;
+	return f2;
 }
 
-static const Fixed	&Fixed::max(const Fixed &f1, const Fixed &f2)
+Fixed const	&Fixed::max(Fixed const &f1, Fixed const &f2)
 {
 	if (f1 > f2)
-		return &f1;
-	else
-		return &f2;
+		return f1;
+	return f2;
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
