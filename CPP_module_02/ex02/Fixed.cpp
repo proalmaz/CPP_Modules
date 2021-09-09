@@ -55,52 +55,52 @@ int Fixed::toInt() const
 	return (_value / (1 << _fractorial));
 }
 
-bool Fixed::operator<(const Fixed &f2)
+bool Fixed::operator<(const Fixed &f2) const
 {
 	return (_value < f2.getRawBits());
 }
 
-bool Fixed::operator<=(const Fixed &f2)
+bool Fixed::operator<=(const Fixed &f2) const
 {
 	return (_value <= f2.getRawBits());
 }
 
-bool Fixed::operator>(const Fixed &f2)
+bool Fixed::operator>(const Fixed &f2) const
 {
 	return (_value > f2.getRawBits());
 }
 
-bool Fixed::operator>=(const Fixed &f2)
+bool Fixed::operator>=(const Fixed &f2) const
 {
 	return (_value >= f2.getRawBits());
 }
 
-bool Fixed::operator==(const Fixed &f2)
+bool Fixed::operator==(const Fixed &f2) const
 {
 	return (_value == f2.getRawBits());
 }
 
-bool Fixed::operator!=(const Fixed &f2)
+bool Fixed::operator!=(const Fixed &f2) const
 {
 	return (_value != f2.getRawBits());
 }
 
-Fixed	&Fixed::operator+(Fixed &f2)
+Fixed	Fixed::operator+(Fixed const &f2) const
 {
 	return (Fixed(this->toFloat() + f2.toFloat()));
 }
 
-Fixed	&Fixed::operator-(Fixed &f2)
+Fixed	Fixed::operator-(Fixed const &f2) const
 {
 	return (Fixed(this->toFloat() - f2.toFloat()));
 }
 
-Fixed	&Fixed::operator*(Fixed &f2)
+Fixed	Fixed::operator*(Fixed const &f2) const
 {
 	return (Fixed(this->toFloat() * f2.toFloat()));
 }
 
-Fixed	&Fixed::operator/(Fixed &f2)
+Fixed	Fixed::operator/(Fixed const &f2) const
 {
 	return (Fixed(this->toFloat() / f2.toFloat()));
 }

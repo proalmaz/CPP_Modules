@@ -21,18 +21,18 @@ public:
 	~Fixed();
 	Fixed(const Fixed& src);
 
-	bool 	operator>(Fixed const 	&f2);
-	bool 	operator<(Fixed const 	&f2);
-	bool 	operator>=(Fixed const	&f2);
-	bool 	operator<=(Fixed const	&f2);
-	bool 	operator==(Fixed const	&f2);
-	bool 	operator!=(Fixed const	&f2);
+	bool 	operator>(Fixed const 	&f2) const;
+	bool 	operator<(Fixed const 	&f2) const;
+	bool 	operator>=(Fixed const	&f2) const;
+	bool 	operator<=(Fixed const	&f2) const;
+	bool 	operator==(Fixed const	&f2) const;
+	bool 	operator!=(Fixed const	&f2) const;
 
 	Fixed	&operator=(Fixed const &f2);
-	Fixed	&operator+(Fixed &f2);
-	Fixed	&operator-(Fixed &f2);
-	Fixed	&operator*(Fixed &f2);
-	Fixed	&operator/(Fixed &f2);
+	Fixed	operator+(Fixed const &f2) const;
+	Fixed	operator-(Fixed const &f2) const;
+	Fixed	operator*(Fixed const &f2) const;
+	Fixed	operator/(Fixed const &f2) const;
 
 	Fixed	&operator++();
 	Fixed	&operator--();
