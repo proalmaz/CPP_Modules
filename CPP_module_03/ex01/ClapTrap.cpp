@@ -32,7 +32,6 @@ ClapTrap &ClapTrap::operator=(ClapTrap &copy)
 	m_energyPoints = copy.m_energyPoints;
 	m_attackDamage = copy.m_attackDamage;
 	m_name = copy.m_name;
-
 	return *this;
 }
 
