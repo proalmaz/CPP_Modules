@@ -2,6 +2,7 @@ NAME	=	MyCharacter
 
 SRC		=	main.cpp \
 			ClapTrap.cpp \
+			ScavTrap.cpp \
 
 CC		=	clang++
 

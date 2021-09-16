@@ -15,6 +15,7 @@ public:
 
 	ScavTrap	&operator=(const ScavTrap &copy);
 	void 		guardGate();
+	void 		attack(string const &target);
 };
 
 std::ostream &operator<<(std::ostream &out, ScavTrap const &src);

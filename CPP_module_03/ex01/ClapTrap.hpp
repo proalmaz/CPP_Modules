@@ -19,10 +19,16 @@ protected:
 public:
 	ClapTrap(string name);
 	ClapTrap(string name="", int HP=0, int EP=0, int AD=0);
-	~ClapTrap();
 	ClapTrap(ClapTrap &copy);
+	~ClapTrap();
 	ClapTrap &operator=(ClapTrap &copy);
 	void	attack(string const &target);
 	void 	takeDamage(unsigned int amount);
 	void 	beRepaired(unsigned int amount);
+	string	getName() const;
+	int 	getHP() const;
+	int 	getEP() const;
+	int 	getAD() const;
 };
+
+std::ostream&	operator<<(std::ostream& out, ClapTrap const & src);
