@@ -3,12 +3,13 @@
 
 int main()
 {
+	cout << "\n####################Constructors#####################\n" << endl;
 	FragTrap o;
 	FragTrap stan("Stanly");
 	FragTrap bob("BOB Wans");
 	FragTrap copyStan(stan);
 
-	cout << o << endl;
+	cout << endl << o << endl;
 	cout << stan << endl;
 	cout << bob << endl;
 
