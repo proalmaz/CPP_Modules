@@ -2,8 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 
 using std::cin;
 using std::string;

@@ -26,7 +26,7 @@ FragTrap::FragTrap(const FragTrap &copy)
 
 FragTrap &FragTrap::operator=(FragTrap &copy)
 {
-	if (*this == copy)
+	if (this == &copy)
 		return *this;
 	m_name = copy.m_name;
 	m_hitPoints = copy.m_hitPoints;
