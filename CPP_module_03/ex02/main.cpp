@@ -27,5 +27,4 @@ int main()
 	cout << "####################Destructors#####################" << endl;
 	cout << endl;
 	return (0);
-	return (0);
 }
