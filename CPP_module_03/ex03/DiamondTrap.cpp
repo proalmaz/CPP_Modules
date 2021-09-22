@@ -4,16 +4,16 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 {
 	m_name = "noName";
 	cout << "Default constructor for " << m_name <<
-	" of DiamondTrap class called" << endl;
+	" for DiamondTrap class called" << endl;
 	ClapTrap::m_name = m_name + "_clap_name";
 	FragTrap::m_hitPoints = 0;
 	ScavTrap::m_energyPoints = 0;
 	FragTrap::m_attackDamage = 0;
 }
 
-DiamondTrap::DiamondTrap(const string &name) : ClapTrap(name + "_clap_name"),
-ScavTrap(), FragTrap(), m_name(name)
+DiamondTrap::DiamondTrap(const string &name) : m_name(name)
 {
+	ClapTrap::setName(name);
 	cout << "Name constructor for " << m_name <<
 	" of DiamondTrap class called" << endl;
 	FragTrap::m_hitPoints = 50;
@@ -23,7 +23,7 @@ ScavTrap(), FragTrap(), m_name(name)
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(), ScavTrap(), FragTrap()
 {
-	cout << "Copy constructor for " << m_name <<
+	cout << "Copy constructor for " << copy.m_name <<
 	" of DiamondTrap class called" << endl;
 	*this = copy;
 }
@@ -46,14 +46,14 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 	return *this;
 }
 
-string	&DiamondTrap::getName() { return m_name; }
+string	DiamondTrap::getName(void) const { return m_name; }
 
 void	DiamondTrap::setName(string const &name) { m_name = name; }
 
 void 	DiamondTrap::whoAmI() const
 {
 	cout << "My name in DiamondTrap is " << m_name <<
-	"\nMy name in ClapTrap is " << ClapTrap::getName << endl;
+	"\nMy name in ClapTrap is " << ClapTrap::getName() << endl;
 }
 
 std::ostream	&operator<<(std::ostream &out, DiamondTrap const &src)

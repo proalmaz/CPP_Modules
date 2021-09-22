@@ -16,7 +16,7 @@ public:
 
 	DiamondTrap	&operator=(DiamondTrap const &copy);
 
-	string		&getName(void);
+	string		getName(void) const;
 	void 		setName(string const &name);
 
 	void 		whoAmI(void) const;
