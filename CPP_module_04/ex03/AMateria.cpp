@@ -2,28 +2,28 @@
 
 AMateria::AMateria()
 {
-	cout << "Default constructor for AMateria called" << endl;
+//	cout << "Default constructor for AMateria called" << endl;
 }
 
 AMateria::AMateria(const string &type) : m_type(type)
 {
-	cout << "Type constructor for AMateria called" << endl;
+//	cout << "Type constructor for AMateria called" << endl;
 }
 
 AMateria::AMateria(AMateria const &copy)
 {
 	m_type = copy.getType();
-	cout << "Copy constructor for AMateria called" << endl;
+//	cout << "Copy constructor for AMateria called" << endl;
 }
 
 AMateria::~AMateria()
 {
-	cout << "Destructor for AMateria called" << endl;
+//	cout << "Destructor for AMateria called" << endl;
 }
 
 AMateria	&AMateria::operator=(AMateria const &copy)
 {
-	cout << "Assignation operator overload for AMateria called" << endl;
+//	cout << "Assignation operator overload for AMateria called" << endl;
 	if (this == &copy)
 		return *this;
 	m_type = copy.getType();
@@ -32,7 +32,7 @@ AMateria	&AMateria::operator=(AMateria const &copy)
 
 string	const	&AMateria::getType() const { return m_type; }
 
-void 	AMateria::use(int &target)
+void 	AMateria::use(ICharacter &target)
 {
 	(void)target;
 }
