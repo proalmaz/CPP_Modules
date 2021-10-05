@@ -20,7 +20,7 @@ public:
 	WrongAnimal &operator=(WrongAnimal &copy);
 	string	getType(void) const;
 	void 	setType(string type);
-	void	makeSound() const;
+	void	makeSound() const ;
 };
 
 std::ostream &operator<<(std::ostream &out, WrongAnimal &src);
