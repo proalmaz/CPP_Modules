@@ -9,6 +9,10 @@ using std::string;
 using std::cout;
 using std::endl;
 
+#include "Form.hpp"
+
+class Form;
+
 class Bureaucrat
 {
 private:
@@ -27,8 +31,9 @@ public:
 	int 		getGrade() const;
 	void 		incrementGrade();
 	void 		decrementGrade();
+	void 		signForm(Form &src) const;
 
-	class GrageTooHighException : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw();

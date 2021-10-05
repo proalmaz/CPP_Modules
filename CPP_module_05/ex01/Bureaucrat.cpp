@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat() : m_name("NoNameBureaucrat"), m_grade(150) {}
 Bureaucrat::Bureaucrat(const string &name, const int grade) : m_name(name)
 {
 	if (grade < 1)
-		throw GrageTooHighException();
+		throw GradeTooHighException();
 	else if (grade > 150)
 		throw GradeTooLowException();
 	m_grade = grade;
@@ -36,7 +36,7 @@ int 	Bureaucrat::getGrade() const { return m_grade; }
 void 	Bureaucrat::incrementGrade()
 {
 	if (m_grade - 1 < 1)
-		throw GrageTooHighException();
+		throw GradeTooHighException();
 	m_grade--;
 }
 
@@ -47,7 +47,22 @@ void 	Bureaucrat::decrementGrade()
 	m_grade++;
 }
 
-const char *Bureaucrat::GrageTooHighException::what() const throw()
+void 	Bureaucrat::signForm(Form &src) const
+{
+	try
+	{
+		src.beSigned(*this);
+		cout << "Bureaucrat " << m_name << " signs form "
+		<< src.getName() << endl;
+	}
+	catch (std::exception &e)
+	{
+		cout << "Bureaucrat can't sign form " << src.getName()
+		<< " because " << e.what() << endl;
+	}
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade to high");
 }
