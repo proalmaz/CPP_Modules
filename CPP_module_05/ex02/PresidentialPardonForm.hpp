@@ -1,0 +1,15 @@
+//
+// Created by Vera Ping on 10/6/21.
+//
+
+#ifndef CPP_MODULE_05_PRESIDENTIALPARDONFORM_HPP
+#define CPP_MODULE_05_PRESIDENTIALPARDONFORM_HPP
+
+
+class PresidentialPardonForm
+{
+
+};
+
+
+#endif //CPP_MODULE_05_PRESIDENTIALPARDONFORM_HPP
