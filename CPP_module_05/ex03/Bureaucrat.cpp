@@ -1,0 +1,90 @@
+#include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat() : m_name("NoNameBureaucrat"), m_grade(150) {}
+
+Bureaucrat::Bureaucrat(const string &name, const int grade) : m_name(name)
+{
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
+	m_grade = grade;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+{
+	*this = copy;
+}
+
+Bureaucrat::~Bureaucrat() {}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
+{
+	if (this == &copy)
+		return *this;
+	m_grade = copy.getGrade();
+	return *this;
+}
+
+string	Bureaucrat::getName() const { return m_name; }
+
+int 	Bureaucrat::getGrade() const { return m_grade; }
+
+void 	Bureaucrat::incrementGrade()
+{
+	if (m_grade - 1 < 1)
+		throw GradeTooHighException();
+	m_grade--;
+}
+
+void 	Bureaucrat::decrementGrade()
+{
+	if (m_grade + 1 > 150)
+		throw GradeTooLowException();
+	m_grade++;
+}
+
+void 	Bureaucrat::signForm(Form &src) const
+{
+	try
+	{
+		src.beSigned(*this);
+		cout << "Bureaucrat " << m_name << " signs form "
+		<< src.getName() << endl;
+	}
+	catch (std::exception &e)
+	{
+		cout << "Bureaucrat can't sign form " << src.getName()
+		<< " because " << e.what() << endl;
+	}
+}
+
+void 	Bureaucrat::executeForm(const Form &form)
+{
+	try
+	{
+		form.execute(*this);
+		cout << m_name << " executes " << form.getName() << endl;
+	}
+	catch (std::exception &e)
+	{
+		cout << "Execute can't be done because " << e.what() << endl;
+	}
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade to high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade to low");
+}
+
+std::ostream &operator<<(std::ostream &out, Bureaucrat const &src)
+{
+	out << "Name of Bureaucrat is " << src.getName() << endl;
+	out << "Grade is " << src.getGrade() << endl;
+	return out;
+}
