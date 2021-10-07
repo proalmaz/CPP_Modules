@@ -1,15 +1,20 @@
-//
-// Created by Vera Ping on 10/6/21.
-//
+#pragma once
 
-#ifndef CPP_MODULE_05_PRESIDENTIALPARDONFORM_HPP
-#define CPP_MODULE_05_PRESIDENTIALPARDONFORM_HPP
+#include "Form.hpp"
 
-
-class PresidentialPardonForm
+class PresidentialPardonForm : public Form
 {
+private:
+	std::string m_target;
 
+public:
+	PresidentialPardonForm();
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(PresidentialPardonForm const &copy);
+	virtual ~PresidentialPardonForm();
+
+	PresidentialPardonForm	&operator=(PresidentialPardonForm const &copy);
+
+	virtual void 	action() const;
+	std::string 	getTarget() const;
 };
-
-
-#endif //CPP_MODULE_05_PRESIDENTIALPARDONFORM_HPP

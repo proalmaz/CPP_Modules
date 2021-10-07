@@ -36,7 +36,7 @@ bool		Form::getSignStatus() const { return m_signStatus; }
 
 void 		Form::beSigned(const Bureaucrat &src)
 {
-	if (src.getGrade() > m_gradeForUse)
+	if (src.getGrade() > m_gradeForSign)
 		throw GradeTooLowException();
 	if (m_signStatus)
 		throw FormAlreadySigned();
@@ -47,8 +47,8 @@ void 		Form::execute(const Bureaucrat &executor) const
 {
 	if (executor.getGrade() > this->getGradeForUse())
 		throw GradeTooLowException();
-	if (this->getSignStatus())
-		throw FormAlreadySigned();
+	if (!this->getSignStatus())
+		throw FormUnsignedException();
 	this->action();
 }
 

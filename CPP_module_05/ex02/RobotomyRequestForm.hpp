@@ -1,15 +1,20 @@
-//
-// Created by Vera Ping on 10/6/21.
-//
+#pragma once
 
-#ifndef CPP_MODULE_05_ROBOTOMYREQUESTFORM_HPP
-#define CPP_MODULE_05_ROBOTOMYREQUESTFORM_HPP
+#include "Form.hpp"
 
-
-class RobotomyRequestForm
+class RobotomyRequestForm : public Form
 {
+private:
+	string	m_target;
 
+public:
+	RobotomyRequestForm();
+	RobotomyRequestForm(string target);
+	RobotomyRequestForm(RobotomyRequestForm const &copy);
+	virtual ~RobotomyRequestForm();
+
+	RobotomyRequestForm &operator=(RobotomyRequestForm const &copy);
+
+	virtual void	action() const;
+	std::string 	getTarget() const;
 };
-
-
-#endif //CPP_MODULE_05_ROBOTOMYREQUESTFORM_HPP
