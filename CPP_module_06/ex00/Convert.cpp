@@ -1,14 +1,6 @@
 #include "Convert.hpp"
 
-Convert::Convert()
-{
-	m_input = "";
-	m_int = 0;
-	m_float = 0.0f;
-	m_double = 0.0;
-	m_char = 0;
-	m_type = 0;
-}
+Convert::Convert() {}
 
 Convert::Convert(const std::string &input) : m_input(input)
 {
@@ -16,7 +8,7 @@ Convert::Convert(const std::string &input) : m_input(input)
 	toChar();
 	toInt();
 	toFloat();
-//	toDouble();
+	toDouble();
 }
 
 Convert::Convert(const Convert &copy)
@@ -102,18 +94,7 @@ void 	Convert::searchType()
 			if (m_input.at(1) >= '0' && m_input.at(1) <= '9')
 			{
 				m_type = 'i';
-				try
-				{
-					m_int = std::stoi(m_input);
-				}
-				catch (std::exception)
-				{
-					cout << "Error catched: Argument doesn't match any needed type: "
-							"<char> <int> <double> <float>" << endl;
-					exit(0);
-				}
 			}
-
 			else
 			{
 				cout << "Error catched: Argument doesn't match any needed type: "
@@ -124,16 +105,6 @@ void 	Convert::searchType()
 		else if (m_input.at(0) >= '0' && m_input.at(0) <= '9')
 		{
 			m_type = 'i';
-			try
-			{
-				m_int = std::stoi(m_input);
-			}
-			catch (std::exception)
-			{
-				cout << "Error catched: Argument doesn't match any needed type: "
-						"<char> <int> <double> <float>" << endl;
-				exit(0);
-			}
 		}
 	}
 	else if (m_input.length() == 1)
@@ -201,14 +172,25 @@ void 	Convert::toFloat()
 {
 	try
 	{
-
+		m_float = std::stof(m_input);
+		cout << "float: " << m_float << ".0f" << endl;
 	}
 	catch (std::exception &exception)
 	{
-
+		cout << "float: impossible" << endl;
 	}
 }
 
 void 	Convert::toDouble()
-{}
+{
+	try
+	{
+		m_double = std::stod(m_input);
+		cout << "double: " << m_double << ".0" << endl;
+	}
+	catch (std::exception &exception)
+	{
+		cout << "double: impossible" << endl;
+	}
+}
 

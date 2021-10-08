@@ -3,6 +3,6 @@
 int main(int argc, char **argv)
 {
 	string input(argv[1]);
-	Convert	ex1(input);
+	Convert *tmp = new Convert(input);
 	return 0;
 }
