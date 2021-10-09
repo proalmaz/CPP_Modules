@@ -52,7 +52,7 @@ int 	Convert::searchType()
 		return ZERO_TYPE;
 	for (int i = 0; i < m_input.length(); ++i)
 	{
-		if (m_input.at(0) == '+' || m_input.at(0) == '-')
+		if (m_input.at(i) == '+' || m_input.at(i) == '-')
 			continue;
 
 		if (i == m_input.length() - 1)
@@ -86,7 +86,7 @@ void 	Convert::printZero()
 
 void 	Convert::printNanOrInf()
 {
-	if (m_type == 5)
+	if (m_type == 6)
 	{
 		cout << "char: impossible\n"
 				"int: impossible\n"
@@ -94,7 +94,7 @@ void 	Convert::printNanOrInf()
 				"double: nan" << endl;
 		exit(0);
 	}
-	else if (m_type == 6)
+	else if (m_type == 7)
 	{
 		cout << "char: impossible\n"
 				"int: impossible\n"
@@ -102,7 +102,7 @@ void 	Convert::printNanOrInf()
 				"double: inf" << endl;
 		exit(0);
 	}
-	else if (m_type == 7)
+	else if (m_type == 8)
 	{
 		cout << "char: impossible\n"
 				"int: impossible\n"
