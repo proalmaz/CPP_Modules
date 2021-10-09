@@ -78,9 +78,9 @@ int 	Convert::searchType()
 void 	Convert::printZero()
 {
 	cout << "char: Non displayable\n"
-			"int: 48\n"
-			"float: 48.0f\n"
-			"double: 48.0" << endl;
+			"int: 0\n"
+			"float: 0.0f\n"
+			"double: 0.0" << endl;
 	exit(0);
 }
 
@@ -169,13 +169,14 @@ void 	Convert::convertFromDouble()
 
 void 	Convert::printValue()
 {
-	if (m_char && (m_char >= 32 && m_char < 127))
+	if (m_char && (m_char >= 32 && m_char < 127) && (m_float >= -128 &&
+	m_float <= 127))
 		cout << "char: '" << m_char << "'" << endl;
 	else if ((m_char > 0 && m_char < 32) || m_char == 127)
 		cout << "char: Non displayable" << endl;
 	else
 		cout << "char: impossible" << endl;
-	if (m_int)
+	if (m_int && (m_float >= -2147483648.0 && m_float <= 2147483647.0))
 		cout << "int: " << m_int << endl;
 	else
 		cout << "int: impossible\n";
