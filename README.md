@@ -35,4 +35,4 @@ Non-trivial tasks in C++. Familiarity with the language, OOP, error handling, ca
 
 ## MODULE 08
 * Introduction to STL containers. Introduction and implementation of iterators.
-* Введение в STL контейнеры. Знакомство и реализация итераторов.
+* Введение в STL контейнеры. Знакомство с итераторами и их реализация.
