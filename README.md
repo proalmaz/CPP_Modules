@@ -20,3 +20,19 @@ Non-trivial tasks in C++. Familiarity with the language, OOP, error handling, ca
 ## MODULE 04
 * Polymorphism.
 * Полиморфизм.
+
+## MODULE 05
+* Exceptions.
+* Исключения.
+
+## MODULE 06
+* Static, reinterpret and dynamic casts.
+* Приведение типов.
+
+## MODULE 07
+* Function and class templates.
+* Шаблоны функций и классов.
+
+## MODULE 08
+* Introduction to STL containers. Introduction and implementation of iterators.
+* Введение в STL контейнеры. Знакомство и реализация итераторов.
